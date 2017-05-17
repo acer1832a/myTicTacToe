@@ -90,6 +90,7 @@ public class Server extends java.lang.Thread {
                 			chessBoard[x][y] = player2;
                 		}
                 		
+                		
                 		if(!(isGameSet())){
                 			if(playWithCom){
                 				ArrayList<Integer> nextStep = calculateStep();
@@ -102,7 +103,6 @@ public class Server extends java.lang.Thread {
                             		}else{
                             			chessBoard[x][y] = player2;
                             		}
-                					
                 					output.println(commandComStep);
                 					output.println(x);
                 					output.println(y);
@@ -110,6 +110,8 @@ public class Server extends java.lang.Thread {
                 				}else{
                 					System.out.println("no Next step!");
                 				}
+                			}else{
+                				output.println(commandContinue);
                 			}
                 		}
                 		
@@ -148,6 +150,7 @@ public class Server extends java.lang.Thread {
     		System.out.println("Game ended in Draw!");
     		result = true;
     	}
+    	System.out.println("result is " + String.valueOf(result));
     	
     	return result;
     }

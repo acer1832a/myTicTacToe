@@ -174,10 +174,11 @@ public class MyClientController {
     			playerSecond.setDisable(true);
     			playWithCom.setDisable(true);
     		}
-    	}else if(!(playWithCom.isSelected())){
-    		playerFirst.setDisable(true);
-    		playerSecond.setDisable(true);
     	}
+    	if(steps == 0){
+    		refreshButton.setDisable(false);
+    	}
+    	
     	Node source = (Node)e.getSource();
     	Integer colIndex = GridPane.getColumnIndex(source);
     	Integer rowIndex = GridPane.getRowIndex(source);
@@ -228,6 +229,7 @@ public class MyClientController {
     	output.println(commandRestart);
     	outputLine = new String();
     	steps = 0;
+    	refreshButton.setDisable(true);
     }
     
     public Label getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
@@ -267,8 +269,9 @@ public class MyClientController {
             if(steps == 0){
             	if(playWithCom.isSelected()&&playerSecond.isSelected()){
             		comFirst();
+            		refreshButton.setDisable(true);
             	}
-            }else if(steps>0){
+            }else{
             	refreshButton.setDisable(false);
             }
  
